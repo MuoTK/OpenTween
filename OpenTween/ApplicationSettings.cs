@@ -41,12 +41,12 @@ namespace OpenTween
         /// <summary>
         /// フィードバック送信先 (メール)
         /// </summary>
-        public const string FeedbackEmailAddress = "kim.upsilon@bucyou.net";
+        public const string FeedbackEmailAddress = "info.MuoTK@gmail.com";
 
         /// <summary>
         /// フィードバック送信先 (Twitter)
         /// </summary>
-        public const string FeedbackTwitterName = "@kim_upsilon";
+        public const string FeedbackTwitterName = "@qmuo";
 
         //=====================================================================
         // Web サイト
@@ -74,14 +74,14 @@ namespace OpenTween
         /// version.txt のフォーマットについては http://sourceforge.jp/projects/opentween/wiki/VersionTxt を参照。
         /// 派生プロジェクトなどでこの機能を無効にする場合は null をセットして下さい。
         /// </remarks>
-        public static readonly string VersionInfoUrl = "http://www.opentween.org/status/version.txt";
+        public static readonly string VersionInfoUrl = "https://rhe.jp/~muo4gb/OpenTweenAC/version.txt";
 
         //=====================================================================
         // Twitter
         // https://dev.twitter.com/ から取得できます。
 
         /// <summary>
-        /// Twitter コンシューマーキー OpenTweenAC
+        /// Twitter コンシューマーキー / OpenTweenAC
         /// </summary>
         public const string TwitterConsumerKey = "SrV5BY317tDFN33FIKCTorQde";
         public const string TwitterConsumerSecret = "lrWT0YWmQi5D0kl7fZ6660DCI4OKLcMQULMje12bzuLBdVZ2Wo";

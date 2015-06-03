@@ -5397,7 +5397,21 @@ namespace OpenTween
             ImageListViewItem itm;
             if (Post.RetweetedId == null)
             {
-                string[] sitem= {"",
+                if (this._cfgCommon.ShowDeleted == true)
+                {
+                    string[] sitem = {"",
+                                 Post.Nickname,
+                                 Post.IsDeleted ? (this._cfgCommon.ShowDeleted ? "(DELETED:" + Post.TextFromApi + ")" : "(DELETED)") : Post.TextFromApi,
+                                 Post.CreatedAt.ToString(this._cfgCommon.DateTimeFormat),
+                                 Post.ScreenName,
+                                 "",
+                                 mk.ToString(),
+                                 Post.Source};
+                    itm = new ImageListViewItem(sitem, this.IconCache, Post.ImageUrl);
+                }
+                else
+                {
+                    string[] sitem = {"",
                                  Post.Nickname,
                                  Post.IsDeleted ? "(DELETED)" : Post.TextSingleLine,
                                  Post.CreatedAt.ToString(this._cfgCommon.DateTimeFormat),
@@ -5405,19 +5419,35 @@ namespace OpenTween
                                  "",
                                  mk.ToString(),
                                  Post.Source};
-                itm = new ImageListViewItem(sitem, this.IconCache, Post.ImageUrl);
+                    itm = new ImageListViewItem(sitem, this.IconCache, Post.ImageUrl);
+                }
             }
             else
             {
-                string[] sitem = {"",
-                                  Post.Nickname,
-                                  Post.IsDeleted ? "(DELETED)" : Post.TextSingleLine,
-                                  Post.CreatedAt.ToString(this._cfgCommon.DateTimeFormat),
-                                  Post.ScreenName + Environment.NewLine + "(RT:" + Post.RetweetedBy + ")",
-                                  "",
-                                  mk.ToString(),
-                                  Post.Source};
-                itm = new ImageListViewItem(sitem, this.IconCache, Post.ImageUrl);
+                if (this._cfgCommon.ShowDeleted == true)
+                {
+                    string[] sitem = {"",
+                                 Post.Nickname,
+                                 Post.IsDeleted ? (this._cfgCommon.ShowDeleted ? "(DELETED:" + Post.TextFromApi + ")" : "(DELETED)") : Post.TextFromApi,
+                                 Post.CreatedAt.ToString(this._cfgCommon.DateTimeFormat),
+                                 Post.ScreenName,
+                                 "",
+                                 mk.ToString(),
+                                 Post.Source};
+                    itm = new ImageListViewItem(sitem, this.IconCache, Post.ImageUrl);
+                }
+                else
+                {
+                    string[] sitem = {"",
+                                 Post.Nickname,
+                                 Post.IsDeleted ? "(DELETED)" : Post.TextSingleLine,
+                                 Post.CreatedAt.ToString(this._cfgCommon.DateTimeFormat),
+                                 Post.ScreenName,
+                                 "",
+                                 mk.ToString(),
+                                 Post.Source};
+                    itm = new ImageListViewItem(sitem, this.IconCache, Post.ImageUrl);
+                }
             }
             itm.StateIndex = Post.StateIndex;
 
@@ -6400,7 +6430,7 @@ namespace OpenTween
             if (_curPost.StatusId != oldDisplayPost.StatusId)
             {
                 this.PostBrowser.DocumentText =
-                    this.createDetailHtml(_curPost.IsDeleted ? "(DELETED)" : _curPost.Text);
+                    this.createDetailHtml(_curPost.IsDeleted ? "<s>" + _curPost.Text + "</s>" : _curPost.Text);
 
                 this.PostBrowser.Document.Window.ScrollTo(0, 0);
 
@@ -7256,25 +7286,27 @@ namespace OpenTween
             foreach (int idx in _curList.SelectedIndices)
             {
                 PostClass post = _statuses.Tabs[_curTab.Text][idx];
-                if (post.IsProtect)
+                //鍵垢のコピー不可回避
+                if (post.IsProtect && this._cfgCommon.CopyPostTextKeyAccount == false)
                 {
                     IsProtected = true;
                     continue;
                 }
-                if (post.IsDeleted) continue;
+                //if (post.IsDeleted) continue;
                 if (!isDm)
                 {
                     if (post.RetweetedId != null)
-                        sb.AppendFormat("{0}:{1} [https://twitter.com/{0}/status/{2}]{3}", post.ScreenName, post.TextSingleLine, post.RetweetedId, Environment.NewLine);
+                        sb.AppendFormat("{0}", post.TextSingleLine);
                     else
-                        sb.AppendFormat("{0}:{1} [https://twitter.com/{0}/status/{2}]{3}", post.ScreenName, post.TextSingleLine, post.StatusId, Environment.NewLine);
+                        sb.AppendFormat("{0}", post.TextSingleLine);
                 }
                 else
                 {
-                    sb.AppendFormat("{0}:{1} [{2}]{3}", post.ScreenName, post.TextSingleLine, post.StatusId, Environment.NewLine);
+                    sb.AppendFormat("{0}", post.TextSingleLine);
                 }
             }
-            if (IsProtected)
+            //鍵垢だった時のメッセージを表示阻止
+            if (IsProtected && this._cfgCommon.CopyPostTextKeyAccount == false)
             {
                 MessageBox.Show(Properties.Resources.CopyStotText1);
             }
@@ -11245,8 +11277,8 @@ namespace OpenTween
             {
                 if (_curPost.IsDm ||
                     !StatusText.Enabled) return;
-
-                if (_curPost.IsProtect)
+                //鍵垢の非公式RTのポップアップの阻止
+                if (_curPost.IsProtect && this._cfgCommon.UnofficialRTKeyAccount == false)
                 {
                     MessageBox.Show("Protected.");
                     return;
@@ -11257,7 +11289,7 @@ namespace OpenTween
                 this._reply_to_id = null;
                 this._reply_to_name = null;
 
-                StatusText.Text = "RT @" + _curPost.ScreenName + ": " + rtdata;
+                StatusText.Text = " RT @" + _curPost.ScreenName + ": " + rtdata;
 
                 StatusText.SelectionStart = 0;
                 StatusText.Focus();
@@ -11796,8 +11828,8 @@ namespace OpenTween
             {
                 if (_curPost.IsDm ||
                     !StatusText.Enabled) return;
-
-                if (_curPost.IsProtect)
+                //鍵垢の非公式RTのポップアップの阻止
+                if (_curPost.IsProtect && this._cfgCommon.UnofficialRTKeyAccount == false)
                 {
                     MessageBox.Show("Protected.");
                     return;
@@ -11805,7 +11837,15 @@ namespace OpenTween
                 string rtdata = _curPost.Text;
                 rtdata = CreateRetweetUnofficial(rtdata, this.StatusText.Multiline);
 
-                StatusText.Text = " QT @" + _curPost.ScreenName + ": " + rtdata;
+                if (this._cfgCommon.ChangeQTtoRT == false)
+                {
+                    StatusText.Text = " QT @" + _curPost.ScreenName + ": " + rtdata;
+                }
+                else
+                {
+                    StatusText.Text = " RT @" + _curPost.ScreenName + ": " + rtdata;
+                }
+                
                 if (_curPost.RetweetedId == null)
                 {
                     _reply_to_id = _curPost.StatusId;

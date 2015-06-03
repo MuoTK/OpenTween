@@ -237,6 +237,11 @@ namespace OpenTween
         public bool TabMouseLock = false;
         public bool IsRemoveSameEvent = false;
         public bool IsUseNotifyGrowl = false;
+        //Secret
+        public bool ChangeQTtoRT = false;
+        public bool CopyPostTextKeyAccount = false;
+        public bool UnofficialRTKeyAccount = false;
+        public bool ShowDeleted = false;
     }
 
     public class UserAccount

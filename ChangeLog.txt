@@ -1,11 +1,11 @@
-1.0.1-beta-02
+更新履歴
 
-
-* NTF: 起動時の DM に関するダイアログの問題を修正しました。トークンの再取得をお願いします。
 
 ==== Ver 1.0.1-beta-02(2015/06/03)
 * CHG: アセンブリ名を OpenTweenAC に
 * CHG: OpenTweenAC の permission を Read, Write and Access direct messages に変更
 * NEW: Ctrl+C を STOT 形式ではなく本文のみのコピーへ
 
-更新履歴の確認は ChangeLog.txt へ
+
+==== Ver 1.0.1-beta-01(2015/06/01)
+* OpenTween のコンシューマーキーから OpenTweenA の変更
