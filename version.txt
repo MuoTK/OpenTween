@@ -1,0 +1,5 @@
+1.0.1-beta-01
+
+
+==== Ver 1.0.1-beta-01(2015/06/01)
+* OpenTween のコンシューマーキーから OpenTweenA の変更

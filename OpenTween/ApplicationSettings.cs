@@ -81,10 +81,10 @@ namespace OpenTween
         // https://dev.twitter.com/ から取得できます。
 
         /// <summary>
-        /// Twitter コンシューマーキー
+        /// Twitter コンシューマーキー OpenTweenAC
         /// </summary>
-        public const string TwitterConsumerKey = "ST6eAABKDRKTqbN7pPo2A";
-        public const string TwitterConsumerSecret = "BJMEiivrXlqGESzdb8D0bvLfNYf3fifXRDMFjMogXg";
+        public const string TwitterConsumerKey = "SrV5BY317tDFN33FIKCTorQde";
+        public const string TwitterConsumerSecret = "lrWT0YWmQi5D0kl7fZ6660DCI4OKLcMQULMje12bzuLBdVZ2Wo";
 
         //=====================================================================
         // yfrog
