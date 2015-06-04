@@ -925,31 +925,13 @@ namespace OpenTween
         {
             var versionNum = new[] { version.Major, version.Minor, version.Build, version.Revision };
 
-            if (versionNum[3] == 0)
+            if (versionNum[3] == 0 && versionNum[2] == 0)
             {
                 return string.Format("{0}.{1}.{2}", versionNum[0], versionNum[1], versionNum[2]);
             }
             else
             {
-                versionNum[2] = versionNum[2] + 1;
-
-                // 10を越えたら桁上げ
-                if (versionNum[2] >= 10)
-                {
-                    versionNum[1] += versionNum[2] / 10;
-                    versionNum[2] %= 10;
-
-                    if (versionNum[1] >= 10)
-                    {
-                        versionNum[0] += versionNum[1] / 10;
-                        versionNum[1] %= 10;
-                    }
-                }
-
-                if (versionNum[3] == 1)
-                    return string.Format("{0}.{1}.{2}-dev", versionNum[0], versionNum[1], versionNum[2]);
-                else
-                    return string.Format("{0}.{1}.{2}-dev (Build {3})", versionNum[0], versionNum[1], versionNum[2], versionNum[3]);
+                return string.Format("{0}.{1}.{2}-beta-{3})", versionNum[0], versionNum[1], versionNum[2], versionNum[3]);
             }
         }
 

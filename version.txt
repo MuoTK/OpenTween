@@ -1,4 +1,4 @@
-1.0.1-beta-02
+1.0.1.2
 https://rhe.jp/~muo4gb/OpenTweenAC/index.html
 
 * NTF: 起動時の DM に関するダイアログの問題を修正しました。トークンの再取得をお願いします。
