@@ -923,15 +923,29 @@ namespace OpenTween
         /// </returns>
         public static string GetReadableVersion(Version version)
         {
-            var versionNum = new[] { version.Major, version.Minor, version.Build, version.Revision };
+            var versionNum = new[] { version.Major, version.Minor, version.Build, version.Revision, version.MinorRevision };
 
-            if (versionNum[3] == 0 && versionNum[2] == 0)
+            if (versionNum[3] == 0 && versionNum[4] != 0)
             {
-                return string.Format("{0}.{1}.{2}", versionNum[0], versionNum[1], versionNum[2]);
+                return string.Format("{0}.{1}.{2}-beta-dev{3}", versionNum[0], versionNum[1], versionNum[2], versionNum[4]);
             }
             else
             {
-                return string.Format("{0}.{1}.{2}-beta-{3})", versionNum[0], versionNum[1], versionNum[2], versionNum[3]);
+                if (versionNum[4] == 0 && versionNum[3] == 0)
+                {
+                    return string.Format("{0}.{1}.{2}", versionNum[0], versionNum[1], versionNum[2]);
+                }
+                else
+                {
+                    if (versionNum[4] == 0)
+                    {
+                        return string.Format("{0}.{1}.{2}-beta{3}", versionNum[0], versionNum[1], versionNum[2], versionNum[3]);
+                    }
+                    else
+                    {
+                        return string.Format("{0}.{1}.{2}-beta{3}-dev{4}", versionNum[0], versionNum[1], versionNum[2], versionNum[3], versionNum[4]);
+                    }
+                }
             }
         }
 
