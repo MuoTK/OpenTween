@@ -296,6 +296,7 @@
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.TimerRefreshIcon = new System.Windows.Forms.Timer(this.components);
             this.PostStateImageList = new System.Windows.Forms.ImageList(this.components);
+            this.MorseEncodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuColumnHeader = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.IconSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.IconSizeNoneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1208,6 +1209,7 @@
             // 
             this.MenuItemEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.UndoRemoveTabMenuItem,
+            this.MorseEncodeToolStripMenuItem,
             this.ToolStripSeparator12,
             this.CopySTOTMenuItem,
             this.CopyURLMenuItem,
@@ -2447,6 +2449,12 @@
             resources.ApplyResources(this.LockListSortOrderToolStripMenuItem, "LockListSortOrderToolStripMenuItem");
             this.LockListSortOrderToolStripMenuItem.Click += new System.EventHandler(this.LockListSortToolStripMenuItem_Click);
             // 
+            // MorseEncodeToolStripMenuItem
+            // 
+            this.MorseEncodeToolStripMenuItem.Name = "MorseEncodeToolStripMenuItem";
+            resources.ApplyResources(this.MorseEncodeToolStripMenuItem, "MorseEncodeToolStripMenuItem");
+            this.MorseEncodeToolStripMenuItem.Click += new System.EventHandler(this.MorseEncodeToolStripMenuItem_Click);
+            // 
             // TweenMain
             // 
             this.AllowDrop = true;
@@ -2795,6 +2803,7 @@
         private ToolStripAPIGauge toolStripApiGauge;
         private System.Windows.Forms.ToolStripMenuItem CreateSourceRuleOpMenuItem;
         private System.Windows.Forms.ToolStripMenuItem SourceRuleMenuItem;
+        internal System.Windows.Forms.ToolStripMenuItem MorseEncodeToolStripMenuItem;
 
     }
 }

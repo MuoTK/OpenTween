@@ -6259,10 +6259,14 @@ namespace OpenTween
 
         public string createDetailHtml(string orgdata)
         {
-            if (this._cfgLocal.UseTwemoji)
-                orgdata = EmojiFormatter.ReplaceEmojiToImg(orgdata);
-
-            return detailHtmlFormatHeader + orgdata + detailHtmlFormatFooter;
+            if (MorseCode.IsJapaneseMorseCode(CreateRetweetUnofficial(orgdata, this.StatusText.Multiline)))
+            {
+                return detailHtmlFormatHeader + orgdata + "&nbsp;&nbsp;<small>Morse: " + MorseCode.ParseJapaneseMorseCode(CreateRetweetUnofficial(orgdata, this.StatusText.Multiline)) + "</small>" + detailHtmlFormatFooter;
+            }
+            else
+            {
+                return detailHtmlFormatHeader + orgdata + detailHtmlFormatFooter;
+            }
         }
 
         private async void DisplayItemImage_Downloaded(object sender, EventArgs e)
@@ -13630,6 +13634,54 @@ namespace OpenTween
             this._cfgCommon.SortOrderLock = state;
 
             _modifySettingCommon = true;
+        }
+
+        // http://starwing.net/suddenly_death.html のパクリですごめんなさい
+        private void SuddenlyDeathToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.StatusText.SelectedText))
+            {
+                this.StatusText.SelectAll();
+            }
+
+            var width = (int)this.StatusText.SelectedText.Aggregate<char, double>(0, (wid, c) =>
+            {
+                var m = (int)c;
+                if ((c >= 0x0 && c < 0x81) || (c == 0xf8f0) || (c >= 0xff61 && c < 0xffa0) || (c >= 0xf8f1 && c < 0xf8f4))
+                {
+                    return wid + 0.5;
+                }
+                else
+                {
+                    return wid + 1.0;
+                }
+            });
+            var repeat = new Func<string, int, string>((str, i) => Enumerable.Repeat(str, i).Aggregate((sum, next) => sum + next));
+
+            var result =
+                "＿" + repeat("人", width + 2) + "＿\n" +
+                "＞　" + this.StatusText.SelectedText + "　＜\n" +
+                "￣^" + repeat("Y^", width + 2) + "￣";
+
+            this.StatusText.SelectedText = result;
+        }
+        private void MorseEncodeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!this.StatusText.Focused)
+            {
+                MessageBox.Show(MorseCode.ParseJapaneseMorseCode(CreateRetweetUnofficial(this._curPost.TextFromApi)));
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(this.StatusText.SelectedText))
+                {
+                    this.StatusText.SelectAll();
+                }
+
+                var result = MorseCode.ToJapaneseMorseCode(this.StatusText.SelectedText);
+
+                this.StatusText.SelectedText = result;
+            }
         }
     }
 }
