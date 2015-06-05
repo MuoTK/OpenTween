@@ -13669,7 +13669,7 @@ namespace OpenTween
         {
             if (!this.StatusText.Focused)
             {
-                MessageBox.Show(MorseCode.ParseJapaneseMorseCode(CreateRetweetUnofficial(this._curPost.TextFromApi)));
+                MessageBox.Show(MorseCode.ParseJapaneseMorseCode(CreateRetweetUnofficial(_curPost.TextFromApi, this.StatusText.Multiline)));
             }
             else
             {
