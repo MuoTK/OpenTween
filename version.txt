@@ -1,17 +1,24 @@
-1.0.1.1.0
+﻿1.0.1.3.0
 https://rhe.jp/~muo4gb/OpenTweenAC/index.html
 
-* NTF: �N������ DM �Ɋւ���_�C�A���O�̖����C�����܂����B�g�[�N���̍Ď擾�����肢���܂��B
+* NTF: 起動時の DM に関するダイアログの問題を修正しました。トークンの再取得をお願いします。
+
+==== Ver 1.0.1.3(2015/06/08)
+* NEW: モールス符号化機能を追加
+* CHG: バージョンを 4 桁に再修正（dev の廃止）
 
 ==== Ver 1.0.1.2.2(2015/06/04)
-* CHG: �t�H�[�}�b�g�� dev �𑝂₵��
+* CHG: フォーマットに dev を増やした
 
 ==== Ver 1.0.1.2.1(2015/06/04)
-* CHG: �o�[�W�����̃t�H�[�}�b�g��ύX
+* CHG: バージョンのフォーマットを変更
 
 ==== Ver 1.0.1.2.0(2015/06/04)
-* CHG: �A�Z���u������ OpenTweenAC ��
-* CHG: OpenTweenAC �� permission �� Read, Write and Access direct messages �ɕύX
-* NEW: Ctrl+C �� STOT �`���ł͂Ȃ��{���݂̂̃R�s�[��
+* CHG: アセンブリ名を OpenTweenAC に
+* CHG: OpenTweenAC の permission を Read, Write and Access direct messages に変更
+* NEW: Ctrl+C を STOT 形式ではなく本文のみのコピーへ
 
-�X�V�����̊m�F�� ChangeLog.txt ��
+==== Ver 1.0.1.1(2015/06/01)
+* OpenTween のコンシューマーキーから OpenTweenA の変更
+
+更新履歴の確認は ChangeLog.txt へ

@@ -1,16 +1,19 @@
-XV—š—ğ
+ï»¿æ›´æ–°å±¥æ­´
 
+==== Ver 1.0.1.3.0(2015/06/08)
+* NEW: ãƒ¢ãƒ¼ãƒ«ã‚¹ç¬¦å·åŒ–æ©Ÿèƒ½ã‚’è¿½åŠ 
+* CHG: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’ 4 æ¡ã«å†ä¿®æ­£ï¼ˆdev ã®å»ƒæ­¢ï¼‰
 
 ==== Ver 1.0.1.2.2(2015/06/04)
-* CHG: ƒtƒH[ƒ}ƒbƒg‚É dev ‚ğ‘‚â‚µ‚½
+* CHG: ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã« dev ã‚’å¢—ã‚„ã—ãŸ
 
 ==== Ver 1.0.1.2.1(2015/06/04)
-* CHG: ƒo[ƒWƒ‡ƒ“‚ÌƒtƒH[ƒ}ƒbƒg‚ğ•ÏX
+* CHG: ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã®ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’å¤‰æ›´
 
 ==== Ver 1.0.1.2.0(2015/06/04)
-* CHG: ƒAƒZƒ“ƒuƒŠ–¼‚ğ OpenTweenAC ‚É
-* CHG: OpenTweenAC ‚Ì permission ‚ğ Read, Write and Access direct messages ‚É•ÏX
-* NEW: Ctrl+C ‚ğ STOT Œ`®‚Å‚Í‚È‚­–{•¶‚Ì‚İ‚ÌƒRƒs[‚Ö
+* CHG: ã‚¢ã‚»ãƒ³ãƒ–ãƒªåã‚’ OpenTweenAC ã«
+* CHG: OpenTweenAC ã® permission ã‚’ Read, Write and Access direct messages ã«å¤‰æ›´
+* NEW: Ctrl+C ã‚’ STOT å½¢å¼ã§ã¯ãªãæœ¬æ–‡ã®ã¿ã®ã‚³ãƒ”ãƒ¼ã¸
 
 ==== Ver 1.0.1.1(2015/06/01)
-* OpenTween ‚ÌƒRƒ“ƒVƒ…[ƒ}[ƒL[‚©‚ç OpenTweenA ‚Ì•ÏX
+* OpenTween ã®ã‚³ãƒ³ã‚·ãƒ¥ãƒ¼ãƒãƒ¼ã‚­ãƒ¼ã‹ã‚‰ OpenTweenA ã®å¤‰æ›´
